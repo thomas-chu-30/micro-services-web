@@ -4,6 +4,7 @@ import './assets/tailwind.css'
 import Aura from '@primeuix/themes/aura'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
+import Ripple from 'primevue/ripple'
 import { createApp } from 'vue'
 
 import App from './App.vue'
@@ -17,5 +18,6 @@ app.use(createPinia()).use(PrimeVue, {
   },
 })
 app.use(router)
+app.directive('ripple', Ripple)
 
 app.mount('#app')
