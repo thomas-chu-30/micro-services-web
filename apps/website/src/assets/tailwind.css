@@ -1,1 +1,5 @@
 @import 'tailwindcss';
+
+.p-menu {
+  border-radius: 0 !important;
+}
