@@ -14,16 +14,22 @@ const items = ref([
     label: 'Documents',
     items: [
       {
-        label: 'New',
+        label: 'dashboard',
         icon: 'pi pi-plus',
         shortcut: '⌘+N',
         to: '/',
       },
       {
-        label: 'Search',
+        label: 'tailwindcss',
         icon: 'pi pi-search',
         shortcut: '⌘+S',
-        to: '/iframe',
+        to: '/tailwindcss',
+      },
+      {
+        label: 'web',
+        icon: 'pi pi-search',
+        shortcut: '⌘+S',
+        to: '/web',
       },
     ],
   },
@@ -31,22 +37,10 @@ const items = ref([
     label: 'Profile',
     items: [
       {
-        label: 'Settings',
-        icon: 'pi pi-cog',
-        shortcut: '⌘+O',
-        to: '/',
-      },
-      {
-        label: 'Messages',
+        label: 'about us',
         icon: 'pi pi-inbox',
         badge: 2,
         to: '/about',
-      },
-      {
-        label: 'Logout',
-        icon: 'pi pi-sign-out',
-        shortcut: '⌘+Q',
-        to: '/',
       },
     ],
   },
@@ -116,7 +110,7 @@ const isOpen = ref(false)
       <template #item="{ item, props }">
         <router-link class="flex items-center" v-bind="props.action" :to="item.to">
           <span :class="item.icon" />
-          <span>{{ item.label }} {{ item.to }}</span>
+          <span>{{ item.label }}</span>
           <Badge v-if="item.badge" class="ml-auto" :value="item.badge" />
           <span
             v-if="item.shortcut"
