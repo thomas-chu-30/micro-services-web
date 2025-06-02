@@ -31,6 +31,18 @@ const items = ref([
         shortcut: '⌘+S',
         to: '/web',
       },
+      {
+        label: 'react 1',
+        icon: 'pi pi-search',
+        shortcut: '⌘+S',
+        to: '/react-1',
+      },
+      {
+        label: 'react 2',
+        icon: 'pi pi-search',
+        shortcut: '⌘+S',
+        to: '/react-2',
+      },
     ],
   },
   {

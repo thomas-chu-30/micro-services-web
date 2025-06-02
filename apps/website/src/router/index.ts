@@ -31,6 +31,22 @@ const router = createRouter({
             iframeSrc: 'http://localhost:5173',
           },
         },
+        {
+          path: '/react-1',
+          name: 'react-1',
+          component: IFrameSrc,
+          meta: {
+            iframeSrc: 'http://localhost:3000',
+          },
+        },
+        {
+          path: '/react-2',
+          name: 'react-2',
+          component: IFrameSrc,
+          meta: {
+            iframeSrc: 'http://localhost:3001',
+          },
+        },
       ],
     },
     {
