@@ -1,4 +1,4 @@
-# Hope Church 專案
+# 微服務專案架構
 
 這是一個使用 Turborepo 建立的 monorepo 專案，用於管理 Hope Church 的各種應用程式和共享套件。
 
