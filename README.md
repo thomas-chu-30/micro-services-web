@@ -1,84 +1,82 @@
-# Turborepo starter
+# Hope Church 專案
 
-This Turborepo starter is maintained by the Turborepo core team.
+這是一個使用 Turborepo 建立的 monorepo 專案，用於管理 Hope Church 的各種應用程式和共享套件。
 
-## Using this example
+## 專案結構
 
-Run the following command:
+### 應用程式 (apps)
 
-```sh
-npx create-turbo@latest
+- `website`: 教會官方網站
+- `location`: 教會位置資訊應用
+- `web`: 主要網站應用
+- `docs`: 文件網站
+
+### 共享套件 (packages)
+
+- `@repo/ui`: 共享的 React 元件庫
+- `@repo/eslint-config`: ESLint 配置
+- `@repo/typescript-config`: TypeScript 配置
+
+## 技術棧
+
+- [TypeScript](https://www.typescriptlang.org/) - 靜態型別檢查
+- [Next.js](https://nextjs.org/) - React 框架
+- [ESLint](https://eslint.org/) - 程式碼檢查
+- [Prettier](https://prettier.io) - 程式碼格式化
+- [Turborepo](https://turborepo.org/) - Monorepo 工具
+
+## 開始使用
+
+### 前置需求
+
+- Node.js 18 或更高版本
+- pnpm 8 或更高版本
+
+### 安裝
+
+```bash
+# 安裝所有依賴
+pnpm install
 ```
 
-## What's inside?
+### 開發
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
+```bash
+# 啟動所有應用程式的開發伺服器
 pnpm dev
+
+# 啟動特定應用程式的開發伺服器
+pnpm dev --filter=website
 ```
 
-### Remote Caching
+### 建置
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+```bash
+# 建置所有應用程式
+pnpm build
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
+# 建置特定應用程式
+pnpm build --filter=website
 ```
-cd my-turborepo
+
+## 遠端快取
+
+本專案使用 Vercel 的遠端快取功能來加速建置過程。要啟用遠端快取，請執行：
+
+```bash
+# 登入 Vercel
 npx turbo login
-```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
+# 連結專案到遠端快取
 npx turbo link
 ```
 
-## Useful Links
+## 開發指南
 
-Learn more about the power of Turborepo:
+1. 所有新的功能開發應該在 feature 分支上進行
+2. 提交前請確保通過所有測試和 lint 檢查
+3. 使用 Conventional Commits 規範來撰寫提交訊息
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+## 授權
+
+本專案為 Hope Church 所有，保留所有權利。
