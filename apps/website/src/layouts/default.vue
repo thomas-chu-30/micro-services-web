@@ -116,9 +116,6 @@ const isOpen = ref(false)
           <i class="w-6 h-6" @click="isOpen = !isOpen">x</i>
         </div>
       </template>
-      <template #submenulabel="{ item }">
-        <span class="text-primary font-bold">{{ item.label }}</span>
-      </template>
       <template #item="{ item, props }">
         <router-link class="flex items-center" v-bind="props.action" :to="item.to">
           <span :class="item.icon" />
