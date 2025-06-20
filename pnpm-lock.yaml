@@ -176,7 +176,13 @@ importers:
       '@schedule-x/calendar':
         specifier: ^2.34.0
         version: 2.34.0(@preact/signals@2.2.0(preact@10.26.9))(preact@10.26.9)
+      '@schedule-x/events-service':
+        specifier: ^2.34.0
+        version: 2.34.0
       '@schedule-x/theme-default':
+        specifier: ^2.34.0
+        version: 2.34.0
+      '@schedule-x/theme-shadcn':
         specifier: ^2.34.0
         version: 2.34.0
       '@schedule-x/vue':
@@ -1689,8 +1695,14 @@ packages:
       '@preact/signals': ^2.0.2
       preact: ^10.19.2
 
+  '@schedule-x/events-service@2.34.0':
+    resolution: {integrity: sha512-1GjwwXSaNtW1JXi9WeTwgdc4sSgPMX9/lWCH1biguV1yAnzFKaD1VfnEXEVnrQzsZZc903xFlL3SmyhTKJPXrg==}
+
   '@schedule-x/theme-default@2.34.0':
     resolution: {integrity: sha512-yqojSAeMDzkU32YkR/EUppdZMwjhRRo+kBqBn9UbEX0S8Xca+ws9U3BqTEnTSTARB3CCRNsbqZYycbXHwAV3mg==}
+
+  '@schedule-x/theme-shadcn@2.34.0':
+    resolution: {integrity: sha512-mxTYzjA59k7w9L8aw0Az/KBLZat75L3KjgymXYOtsRYblHkwVL844FZJ+w2OBww7t+huZYRxb994Hpx1bGHQnw==}
 
   '@schedule-x/vue@2.31.0':
     resolution: {integrity: sha512-9+/RxYRmb/M5sDuM+t95hxPbDGMi2UG8HQYlVhXsGAfCIf1U4lbdiRjyl3thd7PmFaevuH5TeEjq38YLqQBiSw==}
@@ -7339,7 +7351,11 @@ snapshots:
       '@preact/signals': 2.2.0(preact@10.26.9)
       preact: 10.26.9
 
+  '@schedule-x/events-service@2.34.0': {}
+
   '@schedule-x/theme-default@2.34.0': {}
+
+  '@schedule-x/theme-shadcn@2.34.0': {}
 
   '@schedule-x/vue@2.31.0(@schedule-x/calendar@2.34.0(@preact/signals@2.2.0(preact@10.26.9))(preact@10.26.9))(@schedule-x/date-picker@2.33.0(@preact/signals@2.2.0(preact@10.26.9))(preact@10.26.9))(vue@3.5.15(typescript@5.8.2))':
     dependencies:
