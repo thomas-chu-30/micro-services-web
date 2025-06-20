@@ -1,4 +1,5 @@
 import './assets/main.css'
+import './assets/tailwind.css'
 
 import Aura from '@primeuix/themes/aura'
 import PrimeVue from 'primevue/config'
@@ -9,6 +10,9 @@ createApp(App)
   .use(PrimeVue, {
     theme: {
       preset: Aura,
+      options: {
+        darkModeSelector: false,
+      },
     },
   })
   .mount('#app')
