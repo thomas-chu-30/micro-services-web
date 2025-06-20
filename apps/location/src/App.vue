@@ -6,8 +6,11 @@ import {
   createViewMonthGrid,
   createViewWeek,
 } from '@schedule-x/calendar'
+import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
+import { createResizePlugin } from '@schedule-x/resize'
 import '@schedule-x/theme-default/dist/index.css'
 import { ScheduleXCalendar } from '@schedule-x/vue'
+import Button from 'primevue/button'
 import MultiSelect from 'primevue/multiselect'
 import { onMounted, ref } from 'vue'
 
@@ -150,7 +153,7 @@ const calendarApp = createCalendar(
       },
     },
   },
-  [eventsServicePlugin],
+  [eventsServicePlugin, createDragAndDropPlugin(), createResizePlugin()],
 )
 
 onMounted(() => {
@@ -170,15 +173,21 @@ const id = (id: number) => {
 
 <template>
   <div class="max-w-[1140px] mx-auto space-x-3 flex items-start">
-    <MultiSelect
-      v-model="selectedCities"
-      :options="cities"
-      optionLabel="name"
-      filter
-      placeholder="選擇活動室"
-      :maxSelectedLabels="3"
-      class="w-[200px]"
-    />
+    <div>
+      <Button label="Add Event" class="w-full" />
+      <MultiSelect
+        v-model="selectedCities"
+        :options="cities"
+        optionLabel="name"
+        filter
+        placeholder="選擇活動室"
+        :maxSelectedLabels="3"
+        class="w-[200px]"
+      />
+      <ol>
+        <li>i</li>
+      </ol>
+    </div>
 
     <ScheduleXCalendar :calendar-app="calendarApp" @id="id" class="flex-1" />
   </div>
