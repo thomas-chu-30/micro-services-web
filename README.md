@@ -47,6 +47,9 @@ pnpm dev
 
 # 啟動特定應用程式的開發伺服器
 pnpm dev --filter=website
+
+# 如果要兩個以上一專案一同開發
+pnpm turbo run dev --filter=api --filter=location
 ```
 
 ### 建置
