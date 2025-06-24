@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { generateColorScheme } from '@/utils/colors-scheme'
 import {
   createCalendar,
   createViewDay,
@@ -7,28 +8,18 @@ import {
   createViewWeek,
 } from '@schedule-x/calendar'
 import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
+import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { createResizePlugin } from '@schedule-x/resize'
 import '@schedule-x/theme-default/dist/index.css'
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import Button from 'primevue/button'
 import MultiSelect from 'primevue/multiselect'
 import { onMounted, ref } from 'vue'
+import CategoriesList from './components/CategoriesList.vue'
 import { useCategory } from './composables/useCategory'
-
-import { createEventsServicePlugin } from '@schedule-x/events-service'
+import type { ICategory } from './models/categories'
 
 const eventsServicePlugin = createEventsServicePlugin()
-
-//
-
-const selectedCities = ref()
-const cities = ref([
-  { name: 'New York', code: 'NY' },
-  { name: 'Rome', code: 'RM' },
-  { name: 'London', code: 'LDN' },
-  { name: 'Istanbul', code: 'IST' },
-  { name: 'Paris', code: 'PRS' },
-])
 
 //
 // Do not use a ref here, as the calendar instance is not reactive, and doing so might cause issues
@@ -43,16 +34,11 @@ const calendarApp = createCalendar(
     calendars: {
       work: {
         colorName: 'work',
-        lightColors: {
-          main: '#f91c45',
-          container: '#ffd2dc',
-          onContainer: '#59000d',
-        },
-        darkColors: {
-          main: '#ffc0cc',
-          onContainer: '#ffdee6',
-          container: '#a24258',
-        },
+        lightColors: generateColorScheme('#f91c45'),
+      },
+      test: {
+        colorName: 'test',
+        lightColors: generateColorScheme('#000'),
       },
     },
 
@@ -90,7 +76,7 @@ const calendarApp = createCalendar(
         title: 'Event 1',
         start: '2023-12-19',
         end: '2023-12-19',
-        calendarId: 'work',
+        calendarId: 'test',
         description: 'Event 1asdfasdad',
         _customContent: {
           monthAgenda: 'Event 1asdfasdad',
@@ -158,7 +144,7 @@ const calendarApp = createCalendar(
 )
 
 const { getCategories } = useCategory()
-const categories = ref([])
+const categories = ref<ICategory[]>([])
 onMounted(async () => {
   const res = await getCategories()
   console.log(res)
@@ -176,26 +162,26 @@ onMounted(async () => {
 const id = (id: number) => {
   console.log(id)
 }
+const selectedCategories = ref<ICategory>()
 </script>
 
 <template>
-  <div class="max-w-[1140px] mx-auto space-x-3 flex items-start">
-    <div>
+  <div class="max-w-[1140px] mx-auto lg:space-x-3 space-x-0 lg:flex items-start block">
+    <div class="space-y-3">
       <Button label="Add Event" class="w-full" />
-      <MultiSelect
-        v-model="selectedCities"
-        :options="cities"
-        optionLabel="name"
-        filter
-        placeholder="選擇活動室"
-        :maxSelectedLabels="3"
-        class="w-[200px]"
-      />
-      <ol>
-        <li v-for="category in categories" :key="category.id">
-          {{ category.name }}
-        </li>
-      </ol>
+      <div class="block lg:hidden">
+        <MultiSelect
+          v-model="selectedCategories"
+          :options="categories"
+          optionLabel="name"
+          filter
+          placeholder="選擇活動室"
+          :maxSelectedLabels="3"
+          class="w-full"
+        />
+      </div>
+
+      <CategoriesList class="hidden lg:block" v-model:categories="categories" />
     </div>
 
     <ScheduleXCalendar :calendar-app="calendarApp" @id="id" class="flex-1" />
