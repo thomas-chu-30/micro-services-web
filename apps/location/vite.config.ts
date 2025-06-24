@@ -1,4 +1,6 @@
+import dotenv from 'dotenv'
 import { fileURLToPath, URL } from 'node:url'
+dotenv.config()
 
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
@@ -11,6 +13,15 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  server: {
+    proxy: {
+      '^/api': {
+        target: process.env.VITE_API_PROXY_TARGET,
+        changeOrigin: true,
+        rewrite: (path) => path,
+      },
     },
   },
 })

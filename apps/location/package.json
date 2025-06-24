@@ -20,7 +20,8 @@
     "@schedule-x/resize": "^2.34.0",
     "@schedule-x/theme-default": "^2.34.0",
     "@schedule-x/theme-shadcn": "^2.34.0",
-    "@schedule-x/vue": "^2.31.0"
+    "@schedule-x/vue": "^2.31.0",
+    "axios": "^1.10.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",
@@ -32,6 +33,7 @@
     "@vue/eslint-config-typescript": "^14.5.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "dotenv": "^16.5.0",
     "eslint": "^9.22.0",
     "eslint-plugin-vue": "~10.0.0",
     "jiti": "^2.4.2",

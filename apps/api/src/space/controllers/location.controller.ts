@@ -5,7 +5,7 @@ import { LocationService } from '../services/location.service'
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
-  @Get('category')
+  @Get('categories')
   getLocation() {
     return this.locationService.findAll()
   }

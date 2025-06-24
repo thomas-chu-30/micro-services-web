@@ -13,6 +13,7 @@ import { ScheduleXCalendar } from '@schedule-x/vue'
 import Button from 'primevue/button'
 import MultiSelect from 'primevue/multiselect'
 import { onMounted, ref } from 'vue'
+import { useCategory } from './composables/useCategory'
 
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 
@@ -156,7 +157,13 @@ const calendarApp = createCalendar(
   [eventsServicePlugin, createDragAndDropPlugin(), createResizePlugin()],
 )
 
-onMounted(() => {
+const { getCategories } = useCategory()
+const categories = ref([])
+onMounted(async () => {
+  const res = await getCategories()
+  console.log(res)
+  categories.value = res
+  console.log(categories.value)
   new Promise((resolve) => setTimeout(resolve, 1000))
   calendarApp.eventsService.add({
     title: 'Event 1  thomas test',
@@ -185,7 +192,9 @@ const id = (id: number) => {
         class="w-[200px]"
       />
       <ol>
-        <li>i</li>
+        <li v-for="category in categories" :key="category.id">
+          {{ category.name }}
+        </li>
       </ol>
     </div>
 
